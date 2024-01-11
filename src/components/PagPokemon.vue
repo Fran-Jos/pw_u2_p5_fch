@@ -1,14 +1,19 @@
 <template>
+
   <div class="container">
     <p>Ingresa el id del POKEMON</p>
-    <input v-model="id" type="text" v-on:keypress.enter="ObtenerID"/>
+    <input v-model="id" type="text" v-on:keypress.enter="consumirAPI()"/>
 
     <h1>{{ id }}</h1>
     <h2>POKEMON</h2>
 
-    <p type="Nombre:">{{ name }}</p>
-    <p type="weight:">{{ weight }}</p>
-    <p type="Base de experiencia:">{{ base_experience }}</p>
+    <label for="">Nombre</label>
+    <input type="text" v-model="name" >
+    <label for="">Weight</label>
+    <input type="text" v-model="weight" >    
+    <label for="">Base_experience</label>
+    <input type="text" v-model="base_experience" >
+    
   </div>
 </template>
 
@@ -27,10 +32,7 @@ export default {
   watch: {},
 
   methods: {
-    ObtenerID(id) {
-        console.log(id)
-      return `https://pokeapi.co/api/v2/pokemon/${this.id}`;
-    },
+ 
 
     async consumirAPI() {
       this.name = ".........";
@@ -38,15 +40,19 @@ export default {
       this.base_experience = ".......";
 
       const { name, weight, base_experience } = await fetch(
-        this.ObtenerID
+        "https://pokeapi.co/api/v2/pokemon/"+this.id
       ).then((respuesta) => respuesta.json());
+
+     
 
       this.name = name;
       this.weight = weight;
       this.base_experience = base_experience;
+
+   
     },
 
-    ingresoID(idant , idact){
+    ingresoID( idact){
     if (idact!==null) return;
       //Consumo del API:
       this.consumirAPI();
@@ -55,5 +61,35 @@ export default {
 };
 </script>
 
-<style>
+<style scope>
+
+body {
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Esto asegura que el contenedor ocupe el 100% de la altura de la pantalla */
+    margin: 0;
+}
+
+.container {
+    text-align: center; /* Alinea el contenido del contenedor al centro */
+    color: blanchedalmond;
+
+}
+
+.container label {
+    display: block;
+   
+    margin-top: 25px; /* Ajusta según sea necesario */
+    text-align: center;
+}
+
+.container input {
+    width: 100%; /* O ajusta el ancho según sea necesario */
+    margin-bottom: 20px; /* Espaciado entre los elementos de entrada */
+     margin-top: 10px;
+}
+
+
 </style>

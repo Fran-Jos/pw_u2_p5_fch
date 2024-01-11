@@ -1,16 +1,16 @@
 <template>
-  <Pregunta/>
+  <PagPokemon/>
 </template>
  
 <script>
-
+import PagPokemon from './components/PagPokemon.vue';
 import Pregunta from "./components/Pregunta.vue";
  
 export default {
   name: "App",
   components: {
     Pregunta,
-    
+    PagPokemon
     
   },
   methods: {
