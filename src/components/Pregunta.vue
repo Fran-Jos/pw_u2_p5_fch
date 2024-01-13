@@ -44,8 +44,8 @@ export default {
       this.img = image;
     },
 
-    construirURLapi(){
-      return "https://pokeapi.co/api/v2/pokemon/"
+    construirURLapi(id){
+      return "https://pokeapi.co/api/v2/pokemon/"+id;
     }
   },
   watch: {

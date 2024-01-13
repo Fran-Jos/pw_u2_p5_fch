@@ -19,7 +19,7 @@
 
 <script>
 export default {
-  data() {
+  data() {  
     return {
       id: null,
       name: null,
@@ -52,11 +52,7 @@ export default {
    
     },
 
-    ingresoID( idact){
-    if (idact!==null) return;
-      //Consumo del API:
-      this.consumirAPI();
-    }
+ 
   },
 };
 </script>

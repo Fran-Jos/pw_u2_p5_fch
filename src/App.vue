@@ -1,23 +1,16 @@
 <template>
-  <PagPokemon/>
+<PokemonPage/>
 </template>
  
 <script>
-import PagPokemon from './components/PagPokemon.vue';
-import Pregunta from "./components/Pregunta.vue";
- 
+import PokemonPage from "./pages/PokemonPage.vue";
+
 export default {
   name: "App",
   components: {
-    Pregunta,
-    PagPokemon
-    
+    PokemonPage
   },
-  methods: {
-    calcularValor() {
-      return 5 + 5 + 10;
-    },
-  },
+  methods: {},
 };
 </script>
  
@@ -29,6 +22,8 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  margin-top: 60px;
+
 }
+
+
 </style>
