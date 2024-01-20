@@ -1,6 +1,5 @@
 [19:23] SANTIAGO ANDRES CHANGO CALVOPINA
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
   <!-- <Contador titulo="Contador1" :valor="10" />
   <Contador titulo="Contador2" :valor="calcularvalor()"/>
  
@@ -15,17 +14,25 @@
     <imagen :texto="texto1" :urlImg="url1" />
     <imagen :texto="texto2" :urlImg="url2" />
     <imagen :texto="texto3" :urlImg="url3" />
-    <button v-on:click="jugar">Jugar</button>
   </div>
-  <div v-if="mostrarperdedor">
+
+  <div class="text-center" v-if="mostrarjuego">
+    <button class="btn btn-primary" v-on:click="jugar">Jugar</button>
+  </div>
+
+  <div v-if="mostrarperdedor" class="perdedor">
     <h1>Haz utilizado tus 5 intentos</h1>
     <h1>El juego ha termindo, intentalo nuevamente</h1>
-    <button v-on:click="reiniciar">Nuevo Juego</button>
+    <div class="btP">
+      <button v-on:click="reiniciar">Nuevo Juego</button>
+    </div>
   </div>
-  <div v-if="mostrarganador">
+  <div v-if="mostrarganador" class="ganador">
     <h1>Puntaje: {{ puntaje }}</h1>
     <h1>Felicitaciones has ganado un premio de $10.000,00</h1>
-    <button v-on:click="reiniciar">Nuevo Juego</button>
+    <div class="btG">
+      <button v-on:click="reiniciar">Nuevo Juego</button>
+    </div>
   </div>
 </template>
  
@@ -34,11 +41,11 @@
  */
 //import Calculadora from "./components/Calculadora.vue";
 //import Pregunta from "./components/Pregunta.vue"
- 
+
 //import pokemon from "./components/pokemon.vue";
 //import PokemonPage from "./pages/PokemonPage.vue";
 import imagen from "./components/Imagen.vue";
- 
+
 export default {
   name: "App",
   components: {
@@ -78,7 +85,7 @@ export default {
       const data3 = await this.consumirAPI();
       this.texto3 = data3.answer;
       this.url3 = data3.image;
- 
+
       this.evaluarResultado();
     },
     async consumirAPI() {
@@ -105,17 +112,17 @@ export default {
       ) {
         this.puntaje += 1;
       }
- 
+
       if (this.puntaje >= 10) {
         this.mostrarganador = true;
         this.mostrarjuego = false;
         this.mostrarperdedor = false;
       }
- 
+
       if (this.intento === 5) {
         this.mostrarperdedor = true;
         this.mostrarganador = false;
- 
+
         this.mostrarjuego = false;
       }
     },
@@ -145,18 +152,44 @@ export default {
 </script>
  
 <style>
-.container{
-  grid-template-columns: repeat(4,200px);
+.container {
   display: grid;
   justify-content: center;
   align-content: center;
 }
 
-h1{
-grid-column: span 4;
+h1 {
+  grid-column: span 4;
+  text-align: center;
 }
-h2{
-grid-column: span 2 ;
+h2 {
+  grid-column: span 2;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.perdedor {
+  color: red;
+}
+
+.ganador {
+  color: blue;
+}
+
+.btP{
+  text-align: center;
+}
+
+.btG {
+  text-align: center;
+}
+
+button{
+  padding: 20px 40px;
+  font-size: 25px;
+  margin-top: 50px;
 }
 </style>
  

@@ -18,3 +18,16 @@
    
   }
   </script>
+  <style scoped>
+  img{
+    height: 200px;
+    width: 200px;
+    
+
+  }
+
+  h1{
+    font-size: 20px;
+  
+  }
+  </style>
