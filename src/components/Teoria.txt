@@ -1,0 +1,2 @@
+el componente hijo le avisa al padre 
+el padre se comunica con su siguiente hijo 
