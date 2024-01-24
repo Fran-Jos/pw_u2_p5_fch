@@ -1,7 +1,7 @@
 <template>
   <div class="options-container">
     <ul>
-      <li v-for="pokemon in pokemons" :key="pokemon.id" @click="$emit('selecciono', pokemon.id)" >{{ pokemon.nombre  }}</li>
+      <li v-for="pokemon in pokemons" :key="pokemon.id" @click="$emit('selecciono', pokemon.id)" >{{ pokemon.nombre}}</li>
     </ul>
   </div>
 </template>
